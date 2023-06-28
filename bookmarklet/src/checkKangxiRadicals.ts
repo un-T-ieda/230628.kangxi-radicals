@@ -1,6 +1,6 @@
-import { liStyle, pStyle, ulStyle } from "./_modules/_config";
+import { liStyle, pStyle, ulStyle } from "./_modules/_styles";
 
-const main = () => {
+const checkKangxiRadicals = () => {
   const kangxiRadicalsRegex = /[\u2F00-\u2FD5]/g;
 
   const body = document.body;
@@ -57,4 +57,4 @@ const main = () => {
   body.appendChild(resultBoxElement);
 };
 
-main();
+checkKangxiRadicals();
