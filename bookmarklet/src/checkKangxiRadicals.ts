@@ -43,7 +43,7 @@ const checkKangxiRadicals = () => {
   const withoutErrorElement = (pStyle: string) => {
     const p = document.createElement("p");
 
-    p.innerText = "No Kangxi Radicals in this page. ✅";
+    p.innerText = "No Kangxi Radicalsin this page. ✅";
     p.style.cssText = pStyle;
 
     return p;
