@@ -2,17 +2,20 @@ import { liStyle, pStyle, ulStyle } from "./_modules/_styles";
 
 const checkKangxiRadicals = () => {
   const kangxiRadicalsRegex = /[\u2F00-\u2FD5]/g;
+  const radicalsSupplementRegex = /[\u2E80-\u2EFF]/g;
 
   const body = document.body;
   const paragraphArray = body.innerText
     .split("\\n")
     .filter((line) => line !== "");
 
-  const kangxiIncludeText = paragraphArray.filter((line) => {
-    return line.match(kangxiRadicalsRegex);
+  const includeTargetText = paragraphArray.filter((line) => {
+    return (
+      line.match(kangxiRadicalsRegex) || line.match(radicalsSupplementRegex)
+    );
   });
 
-  const hasKangxiRadicals = kangxiIncludeText.length > 0;
+  const hasTargetRadicals = includeTargetText.length > 0;
 
   const createTemplateFragment = (
     textArray: string[],
@@ -27,10 +30,15 @@ const checkKangxiRadicals = () => {
     textArray.forEach((line) => {
       const li = document.createElement("li");
 
-      li.innerHTML = line.replace(
-        kangxiRadicalsRegex,
-        '<span style="background-color: orange;">$&</span>'
-      );
+      li.innerHTML = line
+        .replace(
+          kangxiRadicalsRegex,
+          '<span style="background-color: orange;">$&</span>'
+        )
+        .replace(
+          radicalsSupplementRegex,
+          '<span style="background-color: yellow;">$&</span>'
+        );
 
       li.style.cssText = liStyle;
 
@@ -43,14 +51,14 @@ const checkKangxiRadicals = () => {
   const withoutErrorElement = (pStyle: string) => {
     const p = document.createElement("p");
 
-    p.innerText = "No Kangxi Radicalsin this page. ✅";
+    p.innerText = "No Kangxi Radicals in this page. ✅";
     p.style.cssText = pStyle;
 
     return p;
   };
 
-  const resultBoxElement = hasKangxiRadicals
-    ? createTemplateFragment(kangxiIncludeText, ulStyle, liStyle)
+  const resultBoxElement = hasTargetRadicals
+    ? createTemplateFragment(includeTargetText, ulStyle, liStyle)
     : withoutErrorElement(pStyle);
 
   body.style.position = "relative";
