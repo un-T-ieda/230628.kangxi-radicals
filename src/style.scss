@@ -65,6 +65,16 @@ p {
   line-height: 1.5;
 }
 
+dl {
+  max-width: 400px;
+  font-size: 0.8em;
+  line-height: 1.5;
+}
+
+dd {
+  margin-left: 0.8em;
+}
+
 small {
   margin: 0.5em;
 }
@@ -105,4 +115,34 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.c-box-orange {
+  display: inline-flex;
+  align-self: center;
+  width: 0.8em;
+  height: 0.8em;
+  background-color: orange;
+}
+
+.c-box-yellow {
+  display: inline-flex;
+  align-self: center;
+  width: 0.8em;
+  height: 0.8em;
+  background-color: yellow;
+}
+
+.u-flex {
+  display: flex;
+}
+
+.u-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6em;
+}
+
+.u-mr-1 {
+  margin-right: 0.4em;
 }
