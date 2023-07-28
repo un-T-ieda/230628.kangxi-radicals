@@ -4,21 +4,24 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "yarn replaceBookmarklet && vite",
     "build": "tsc && npm run bundle:prod && vite build",
     "preview": "vite preview",
     "bundle:dev": "yarn rollup --config --watch",
-    "bundle:prod": "NODE_ENV=production yarn rollup --config"
+    "bundle:prod": "NODE_ENV=production yarn rollup --config && yarn replaceBookmarklet",
+    "replaceBookmarklet": "npx ts-node --esm scripts/replaceBookmarklet.ts"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.2",
     "@rollup/plugin-node-resolve": "^15.1.0",
     "@rollup/plugin-terser": "^0.4.3",
     "@rollup/plugin-typescript": "^11.1.1",
+    "@types/node": "^20.4.5",
     "fast-glob": "^3.2.12",
     "rollup": "^3.25.3",
     "rollup-plugin-includepaths": "^0.2.4",
     "sass": "^1.63.6",
+    "ts-node": "^10.9.1",
     "tslib": "^2.6.0",
     "typescript": "^5.0.2",
     "vite": "^4.3.9"
