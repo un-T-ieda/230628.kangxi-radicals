@@ -1,4 +1,3 @@
-import { generatedBookmarklet } from "./_modules/bookmarklet";
 import "./style.scss";
 
 const copyUrl = (text: string) => {
@@ -21,8 +20,15 @@ const copyUrl = (text: string) => {
   });
 };
 
-const main = () => {
-  const bookmarklet = "javascript:" + generatedBookmarklet;
+const fetchBookmarklet = () =>
+  fetch("/bookmarklet/checkKangxiRadicals.js")
+    .then((res) => res.text())
+    .catch((err) => {
+      console.error(err);
+    });
+
+const main = async () => {
+  const bookmarklet = "javascript:" + (await fetchBookmarklet());
 
   copyUrl(bookmarklet);
 };

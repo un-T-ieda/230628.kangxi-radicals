@@ -4,12 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "yarn replaceBookmarklet && vite",
+    "dev": "vite",
     "build": "tsc && npm run bundle:prod && vite build",
     "preview": "vite preview",
     "bundle:dev": "yarn rollup --config --watch",
-    "bundle:prod": "NODE_ENV=production yarn rollup --config && yarn replaceBookmarklet",
-    "replaceBookmarklet": "npx ts-node --esm scripts/replaceBookmarklet.ts"
+    "bundle:prod": "NODE_ENV=production yarn rollup --config"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.2",

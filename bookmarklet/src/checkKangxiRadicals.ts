@@ -6,7 +6,7 @@ const checkKangxiRadicals = () => {
 
   const body = document.body;
   const paragraphArray = body.innerText
-    .split("\\n")
+    .split("\n")
     .filter((line) => line !== "");
 
   const includeTargetText = paragraphArray.filter((line) => {

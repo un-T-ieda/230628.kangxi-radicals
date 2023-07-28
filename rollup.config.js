@@ -8,7 +8,7 @@ import terser from "@rollup/plugin-terser";
 const isProduction = process.env.NODE_ENV === 'production' ? true : false;
 
 const input = 'bookmarklet/src/';
-const output = "bookmarklet/dist/";
+const output = "public/bookmarklet/";
 
 const files = fg.sync(input + '**/*.ts', { ignore: ['**/_*.ts'] });
 
